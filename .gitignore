@@ -1,0 +1,43 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# Environment
+.env
+*.env
+
+# Uploads + DB
+backend/uploads/
+backend/chroma_db/
+*.db
+
+# ML artifacts
+ml_training/models/*.pt
+ml_training/models/*.onnx
+mlruns/
+
+# Frontend
+frontend/node_modules/
+frontend/.next/
+frontend/dist/
+
+# IDE
+.vscode/
+.idea/
+
+
+
+# DVC tracked files — don't commit actual data/models
+ml_training/data/raw/train.json
+ml_training/data/raw/val.json
+ml_training/data/raw/clause_train.json
+ml_training/data/raw/clause_val.json
+ml_training/models/ner/
+ml_training/models/clause_classifier/
+
+# DVC cache
+.dvc/cache
+.dvc/tmp

@@ -1,0 +1,92 @@
+[
+  {
+    "text": "The agreement may be terminated by either party with 30 days' written notice.",
+    "label": "STANDARD",
+    "reason": "Fair termination clause."
+  },
+  {
+    "text": "The borrower shall not dispute any interest rate changes imposed by the lender.",
+    "label": "RISKY",
+    "reason": "Waiver of borrower's right to contest unfair terms."
+  },
+  {
+    "text": "किरायेदार मकान में कोई बदलाव नहीं करेगा बिना मालिक की लिखित अनुमति के।",
+    "label": "STANDARD",
+    "reason": "Reasonable restriction on tenant modifications."
+  },
+  {
+    "text": "The lender may increase the interest rate at any time without notice.",
+    "label": "RISKY",
+    "reason": "Unilateral interest rate hike is exploitative."
+  },
+  {
+    "text": "The employer reserves the right to terminate employment without notice for any reason.",
+    "label": "UNUSUAL",
+    "reason": "At-will termination is common in some countries but unusual in India."
+  },
+  {
+    "text": "The employee shall surrender all confidential documents upon termination.",
+    "label": "STANDARD",
+    "reason": "Standard non-disclosure clause for employees."
+  },
+  {
+    "text": "In case of dispute, all legal proceedings must be in Hindi only.",
+    "label": "UNUSUAL",
+    "reason": "Restricts legal rights by imposing language conditions."
+  },
+  {
+    "text": "The company reserves the right to adjust salaries based on market conditions annually.",
+    "label": "STANDARD",
+    "reason": "Common adjustment clause in employment contracts."
+  },
+  {
+    "text": "The loan shall accrue interest at 18% per annum, compounded weekly.",
+    "label": "RISKY",
+    "reason": "Extremely high interest and compounding are predatory."
+  },
+  {
+    "text": "The property deed must be registered within 30 days of execution.",
+    "label": "STANDARD",
+    "reason": "Standard legal requirement for property transfers."
+  },
+  {
+    "text": "The tenant shall be responsible for maintenance of the property unless damages are due to natural disasters.",
+    "label": "STANDARD",
+    "reason": "Fair allocation of maintenance responsibilities."
+  },
+  {
+    "text": "The borrower must provide a post-dated cheque for the entire loan amount upfront.",
+    "label": "RISKY",
+    "reason": "Encourages fraud and violates banking norms."
+  },
+  {
+    "text": "The employer can terminate the contract without notice for any reason.",
+    "label": "RISKY",
+    "reason": "No job security for the employee."
+  },
+  {
+    "text": "The landlord shall provide 30 days' notice before raising the rent.",
+    "label": "STANDARD",
+    "reason": "Fair notice period for rent increase as per rental laws."
+  },
+  {
+    "text": "The employer is not liable for any injuries sustained at work.",
+    "label": "RISKY",
+    "reason": "Exempts employer from liability for workplace injuries, which is illegal."
+  },
+  {
+    "text": "अगर संपत्ति का मूल्य घट जाए तो भी खरीदार को पूरा दाम भुगतान करना होगा।",
+    "label": "RISKY",
+    "reason": "One-sided clause forcing buyer to pay full amount even if value decreases."
+  },
+  {
+    "text": "प्रत्येक साल 10% ब्याज की वृद्धि कर दी जाएगी बगैर सूचना के।",
+    "label": "RISKY",
+    "reason": "Unilateral interest rate hike without notice—exploitative."
+  },
+  {
+    "text": "The property shall be transferred to the buyer upon full payment of ₹50,00,000.",
+    "label": "STANDARD",
+    "reason": "Standard property transfer clause upon full payment."
+  }
+]

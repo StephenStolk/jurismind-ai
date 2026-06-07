@@ -1,0 +1,72 @@
+services:
+  # ── FastAPI Backend ──────────────────────────────
+  - type: web
+    name: jurismind-backend
+    runtime: docker
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    plan: free
+    envVars:
+      - key: DEBUG
+        value: "False"
+      - key: DATABASE_URL
+        fromDatabase:
+          name: jurismind-db
+          property: connectionString
+      - key: REDIS_URL
+        fromService:
+          name: jurismind-redis
+          type: redis
+          property: connectionString
+      - key: OPENAI_API_KEY
+        sync: false   # set manually in Render dashboard
+      - key: OPENAI_BASE_URL
+        value: https://openrouter.ai/api/v1
+      - key: LLM_MODEL
+        value: openai/gpt-oss-120b:free
+      - key: CHROMA_PERSIST_DIR
+        value: /data/chroma_db
+      - key: UPLOAD_DIR
+        value: /data/uploads
+    disk:
+      name: jurismind-data
+      mountPath: /data
+      sizeGB: 1
+
+  # ── Celery Worker ────────────────────────────────
+  - type: worker
+    name: jurismind-worker
+    runtime: docker
+    dockerfilePath: ./backend/Dockerfile.worker
+    dockerContext: ./backend
+    plan: free
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: jurismind-db
+          property: connectionString
+      - key: REDIS_URL
+        fromService:
+          name: jurismind-redis
+          type: redis
+          property: connectionString
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: OPENAI_BASE_URL
+        value: https://openrouter.ai/api/v1
+      - key: LLM_MODEL
+        value: openai/gpt-oss-120b:free
+      - key: CHROMA_PERSIST_DIR
+        value: /data/chroma_db
+      - key: UPLOAD_DIR
+        value: /data/uploads
+    disk:
+      name: jurismind-data
+      mountPath: /data
+      sizeGB: 1
+
+  # ── Redis ────────────────────────────────────────
+  - type: redis
+    name: jurismind-redis
+    plan: free
+    ipAllowList: []

@@ -1,0 +1,362 @@
+[
+  {
+    "text": "The tenant shall pay rent of ₹15,000 on or before 5th of each month.",
+    "label": "STANDARD",
+    "reason": "Standard rent payment clause with a clear due date."
+  },
+  {
+    "text": "कामकाज में गलती होने पर कर्मचारी अपने खर्चे पर सम्मानित की जा सकती है।",
+    "label": "UNUSUAL",
+    "reason": "Unilateral penalty clause for errors without clear fairness."
+  },
+  {
+    "text": "The property will be transferred to the buyer only after full payment in cash.",
+    "label": "RISKY",
+    "reason": "Encourages black money transactions—illegal under FEMA."
+  },
+  {
+    "text": "The borrower shall sign a blank cheque in the name of the lender.",
+    "label": "RISKY",
+    "reason": "Signing a blank cheque is unethical and risky."
+  },
+  {
+    "text": "किरायेदार मकान की मरम्मत के लिए जिम्मेदार होगा, भले ही नुकसान मालिक का गलती हो।",
+    "label": "RISKY",
+    "reason": "Tenant held liable for all repairs — unfair and likely illegal."
+  },
+  {
+    "text": "बेईमानता या गलत सूचना देने पर, उधारकर्ता ऋण राशि की दोगुनी राशि देगा।",
+    "label": "RISKY",
+    "reason": "Penalty of double the loan amount is exploitative and likely unenforceable."
+  },
+  {
+    "text": "अधिकारी पासपोर्ट या अन्य दस्तावेजों की छाप नहीं लेंगे।",
+    "label": "STANDARD",
+    "reason": "Standard clause stating documents will not be stamped or certified."
+  },
+  {
+    "text": "The property shall be transferred only if the buyer pays all taxes and fees. No exceptions allowed.",
+    "label": "STANDARD",
+    "reason": "Fair and expected condition in property deals."
+  },
+  {
+    "text": "The employee must report all personal income to the employer for deduction purposes.",
+    "label": "UNUSUAL",
+    "reason": "Overreach into employee's personal finances."
+  },
+  {
+    "text": "The tenant must vacate the property within 24 hours upon demand by the landlord.",
+    "label": "RISKY",
+    "reason": "Immediate eviction without reasonable notice is illegal."
+  },
+  {
+    "text": "Access to common areas (Society club, lifts) may be restricted for non-payment of dues.",
+    "label": "STANDARD",
+    "reason": "Standard penalty for non-payment in societies."
+  },
+  {
+    "text": "The borrower shall repay the loan amount of ₹2,00,000 within 24 months with 10% annual interest.",
+    "label": "STANDARD",
+    "reason": "Standard loan repayment terms with reasonable interest."
+  },
+  {
+    "text": "किसी भी नुकसान के लिए कंपनी कोई जिम्मेदारी नहीं लेगी।",
+    "label": "RISKY",
+    "reason": "Exculpatory clause may be illegal in certain contexts."
+  },
+  {
+    "text": "कंपनी कर्मचारी के नोटबुक्स या डायरी को किसी भी समय नोटिस के बिना जांच सकती है।",
+    "label": "UNUSUAL",
+    "reason": "Intrusive surveillance clause without prior notice."
+  },
+  {
+    "text": "The employee may be dismissed without notice for any reason.",
+    "label": "UNUSUAL",
+    "reason": "Employment-at-will clause is uncommon in India."
+  },
+  {
+    "text": "The employer reserves the right to deduct salary for any damage to office property.",
+    "label": "UNUSUAL",
+    "reason": "One-sided clause shifting liability to the employee."
+  },
+  {
+    "text": "The employee shall receive a salary of ₹45,000 per month, revised annually based on performance.",
+    "label": "STANDARD",
+    "reason": "Fair salary clause with annual revision terms."
+  },
+  {
+    "text": "The borrower shall repay the loan in 24 monthly installments with 12% interest per annum.",
+    "label": "STANDARD",
+    "reason": "Standard loan repayment terms with reasonable interest."
+  },
+  {
+    "text": "The employee must surrender their passport to the employer upon joining.",
+    "label": "RISKY",
+    "reason": "Unlawful retention of employee's passport is exploitative."
+  },
+  {
+    "text": "The borrower shall repay the loan in equal monthly installments of ₹20,000 over 36 months.",
+    "label": "STANDARD",
+    "reason": "Standard amortization schedule with reasonable terms."
+  },
+  {
+    "text": "The loan must be repaid within 36 months. Any prepayment will incur a 10% penalty.",
+    "label": "UNUSUAL",
+    "reason": "Prepayment penalty is uncommon but not illegal."
+  },
+  {
+    "text": "दस्तावेज में किसी त्रुटि के लिए प्रकाशक के निर्दोष होंगे।",
+    "label": "STANDARD",
+    "reason": "Standard disclaimer protecting the publisher from errors in documents."
+  },
+  {
+    "text": "किरायेदार के पेट मालिक की अनुमति से ही पालतू जानवर रख सकता है।",
+    "label": "STANDARD",
+    "reason": "Common clause requiring landlord permission for pets."
+  },
+  {
+    "text": "The borrower shall repay the loan amount of ₹5,00,000 within 36 months with 12% annual interest.",
+    "label": "STANDARD",
+    "reason": "Standard loan repayment terms with clear interest rate."
+  },
+  {
+    "text": "नौकरी छोड़ने पर सभी कंपनी के संपत्ति को 15 दिन के भीतर वापस करना होगा।",
+    "label": "STANDARD",
+    "reason": "Standard company property return clause."
+  },
+  {
+    "text": "The landlord shall provide 30 days’ notice before increasing the rent by more than 10%.",
+    "label": "STANDARD",
+    "reason": "Reasonable rent increase clause with prior notice."
+  },
+  {
+    "text": "कराएदार खर्चों को उनके खाते में से काट लिया जाएगा।",
+    "label": "RISKY",
+    "reason": "Unilateral deduction from tenant’s account without consent."
+  },
+  {
+    "text": "The landlord may enter the property at any time without prior notice.",
+    "label": "RISKY",
+    "reason": "Violates tenant privacy rights under rent control laws."
+  },
+  {
+    "text": "किरायेदार को 6 महीने की सूटकेस देनी होगी और फिर भी मालिक 30 दिनों में खाली करा सकता है।",
+    "label": "UNUSUAL",
+    "reason": "Short notice period after initial rent deposit."
+  },
+  {
+    "text": "किरायेदार सभी मरम्मत खर्चे अपने हिस्से से popularity करेगा.",
+    "label": "UNUSUAL",
+    "reason": "Tenant is responsible for all maintenance costs, which is uncommon."
+  },
+  {
+    "text": "The seller warrants that the property has no legal encumbrances or disputes at the time of sale.",
+    "label": "STANDARD",
+    "reason": "Standard legal warranty in property transactions."
+  },
+  {
+    "text": "बैंक बिना कारण के ऋण की शर्तें बदल सकता है।",
+    "label": "RISKY",
+    "reason": "Bank can arbitrarily change terms, which is unfair and possibly illegal."
+  },
+  {
+    "text": "The property shall be transferred only after full payment, including all hidden charges.",
+    "label": "STANDARD",
+    "reason": "Fair and transparent condition for property transfer."
+  },
+  {
+    "text": "The borrower agrees to pay all legal fees if the loan is disputed.",
+    "label": "UNUSUAL",
+    "reason": "One-sided cost burden on the borrower."
+  },
+  {
+    "text": "The tenant shall maintain the property in good condition and repair any damage caused.",
+    "label": "STANDARD",
+    "reason": "Fair expectation for property maintenance."
+  },
+  {
+    "text": "The employee must provide 60 days' notice before resignation, failing which salary will be forfeited.",
+    "label": "UNUSUAL",
+    "reason": "Long notice period with severe penalty is one-sided."
+  },
+  {
+    "text": "दस्तावेज़ की सभी शर्तें हिन्दी Sprache में मान्य होंगी।",
+    "label": "STANDARD",
+    "reason": "Standard language provision in Hindi documents."
+  },
+  {
+    "text": "कंपनी के किसी भी समय कर्मचारी की नौकरी समाप्त कर सकती है बिना औपचारिकता।",
+    "label": "RISKY",
+    "reason": "No notice period or due process for termination."
+  },
+  {
+    "text": "The borrower shall pay a penalty of 2% per month on late loan payments.",
+    "label": "STANDARD",
+    "reason": "Standard late payment penalty clause in loan agreements."
+  },
+  {
+    "text": "The employer reserves the right to deduct salary for any perceived negligence.",
+    "label": "RISKY",
+    "reason": "Arbitrary salary deductions are exploitative and illegal."
+  },
+  {
+    "text": "The seller shall not be responsible for any hidden property defects after sale.",
+    "label": "RISKY",
+    "reason": "Unfairly shifts liability to the buyer—contravenes consumer rights."
+  },
+  {
+    "text": "किसी भी विवाद की स्थिति में केवल मोहल्ला पंचायत का ही निर्णय मान्य होगा।",
+    "label": "RISKY",
+    "reason": "Excludes legal recourse, potentially illegal."
+  },
+  {
+    "text": "The employee must reimburse the company for training costs if they leave within 2 years.",
+    "label": "UNUSUAL",
+    "reason": "Uncommon but legally enforceable in some cases."
+  },
+  {
+    "text": "किरायेदार हर साल पेंट और रिपेयर के लिए ₹5,000 देंगे।",
+    "label": "UNUSUAL",
+    "reason": "Fixed annual maintenance charge is uncommon in rent agreements."
+  },
+  {
+    "text": "The property shall be transferred in favour of the buyer upon full payment as per the terms of this deed.",
+    "label": "STANDARD",
+    "reason": "Standard transfer condition in property deeds."
+  },
+  {
+    "text": "The employee shall be provided with health insurance after completion of the probation period.",
+    "label": "STANDARD",
+    "reason": "Fair employer-provided benefit with reasonable condition."
+  },
+  {
+    "text": "The tenant is responsible for all maintenance costs, including major repairs.",
+    "label": "RISKY",
+    "reason": "Shifts landlord's legal obligations to tenant."
+  },
+  {
+    "text": "All disputes shall be resolved through arbitration in Mumbai.",
+    "label": "STANDARD",
+    "reason": "Standard arbitration clause specifying dispute resolution."
+  },
+  {
+    "text": "The lender may charge a penalty of up to 2% per month for delayed payments.",
+    "label": "UNUSUAL",
+    "reason": "Penalty rate is higher than standard market rates."
+  },
+  {
+    "text": "The employee shall be liable for all legal disputes arising from their work.",
+    "label": "UNUSUAL",
+    "reason": "Unfairly shifts legal liability to the employee."
+  },
+  {
+    "text": "The borrower agrees that the lender may take possession of any collateral without court order.",
+    "label": "UNUSUAL",
+    "reason": "Uncommon but not illegal in private loans."
+  },
+  {
+    "text": "बैंक इंटरेस्ट रेट को भरे बिना बढ़ा सकता है।",
+    "label": "RISKY",
+    "reason": "Allows bank to raise interest without notice, which is unfair."
+  },
+  {
+    "text": "The employee agrees to mandatory overtime of up to 12 hours on 3 days a week.",
+    "label": "UNUSUAL",
+    "reason": "Excessive overtime expectation."
+  },
+  {
+    "text": "The landlord can forcibly enter the property at any time without prior notice.",
+    "label": "RISKY",
+    "reason": "Violates tenant privacy rights."
+  },
+  {
+    "text": "किरायेदार थर्ड पार्टी को बिना मालिक की अनुमति के मकान patience नहीं कर सकता।",
+    "label": "STANDARD",
+    "reason": "Common sublease restriction in rental agreements."
+  },
+  {
+    "text": "द香港य प्रबन्धक सारे नियम बदल सकता है बिना पूव सूचना के।",
+    "label": "UNUSUAL",
+    "reason": "Unilateral rule changes by society is one-sided but not illegal."
+  },
+  {
+    "text": "The employer shall not be liable for accidents outside working hours.",
+    "label": "UNUSUAL",
+    "reason": "Limits employer liability beyond standard worker compensation laws."
+  },
+  {
+    "text": "दस्तखत करने के बाद कोई तरीका छोडने का नहीं है। हर हद तक जिम्मेदार रहना पड़ेगा।",
+    "label": "RISKY",
+    "reason": "No termination clause—exploitative contract condition."
+  },
+  {
+    "text": "किरायादार बिना अवकाश के मकान दिखाने के लिए तैयार रहेगा।",
+    "label": "UNUSUAL",
+    "reason": "Landlord can show the property without notice, which is inconvenient."
+  },
+  {
+    "text": "The guarantor shall be liable for the full loan amount if the borrower defaults.",
+    "label": "STANDARD",
+    "reason": "Standard clause in loan agreements with a guarantor."
+  },
+  {
+    "text": "The property shall be transferred only upon full payment and valid government registration.",
+    "label": "STANDARD",
+    "reason": "Required legal condition for property transfer."
+  },
+  {
+    "text": "दोनों पक्ष यथास्थिति पर सहमत हैं और विवाद के लिए कोई कानूनी कार्रवाई नहीं करेंगे।",
+    "label": "RISKY",
+    "reason": "Waives legal rights, potentially illegal."
+  },
+  {
+    "text": "ందాంగ్ की बकाया राशि में 2% प्रति माह ब्याज लगेगा।",
+    "label": "STANDARD",
+    "reason": "Standard late payment interest clause."
+  },
+  {
+    "text": "अगर खरीदार को फैसला पसंद न आये तो भी संपत्ति का भुगतान पूर्ण करना होगा।",
+    "label": "RISKY",
+    "reason": "No recourse for buyer if dissatisfied with the decision."
+  },
+  {
+    "text": "The employee's gratuity shall be forfeited if they resign within 3 years of joining.",
+    "label": "UNUSUAL",
+    "reason": "Forfeiture of gratuity is harsh but not legally prohibited."
+  },
+  {
+    "text": "दस्तावेज़ पर स्वीकृति के साथ मकान के हस्तांतरण करेंगे बिना किसी अतिरिक्त दस्तावेज़ की आवश्यकता।",
+    "label": "STANDARD",
+    "reason": "Standard deed transfer clause with mutual agreement."
+  },
+  {
+    "text": "The loan shall be secured by the borrower's immovable property in case of default.",
+    "label": "STANDARD",
+    "reason": "Common security clause in loan agreements."
+  },
+  {
+    "text": "दा खाता रखने की जिम्मेदारी बिलकुल ही क़रारदातर पर रहेगा।",
+    "label": "UNUSUAL",
+    "reason": "One-sided accounting responsibility in contract."
+  },
+  {
+    "text": "कामगार को वार्षिक चिकित्सकीय परीक्षण के लिए 10 दिनों तक अवकाश मिलेगा, बिना वेतन कटौती के।",
+    "label": "STANDARD",
+    "reason": "Mandated medical leave under Indian labor laws."
+  },
+  {
+    "text": "अगर बैंक दिया हुआ ऋण वापस नहीं किया गया तो गारंटर का खुद का संपत्ति बेच दी जाएगी।",
+    "label": "RISKY",
+    "reason": "Unilateral liquidation of guarantor's personal property without due process."
+  },
+  {
+    "text": "The landlord reserves the right to increase rent by 20% annually without justification.",
+    "label": "RISKY",
+    "reason": "Excessive rent hike without cap is exploitative."
+  },
+  {
+    "text": "बिक्री की तारीख के बाद 10% अग्रिम दाम वापस नहीं किए जाएंगे।",
+    "label": "RISKY",
+    "reason": "Forfeiture of deposit without valid reason—unfair."
+  }
+]
