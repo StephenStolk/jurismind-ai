@@ -38,6 +38,9 @@ ml_training/data/raw/clause_val.json
 ml_training/models/ner/
 ml_training/models/clause_classifier/
 
+backend/ml_training/models
+backend/ml_training/data
+
 # DVC cache
 .dvc/cache
 .dvc/tmp
