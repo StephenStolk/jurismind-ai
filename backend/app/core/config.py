@@ -22,14 +22,14 @@ class Settings(BaseSettings):
     REDIS_URL: str
 
     # ChromaDB
-    CHROMA_PERSIST_DIR: str = "./chroma_db"
+    CHROMA_PERSIST_DIR: str = "/tmp/chroma_db"
     CHROMA_COLLECTION_NAME: str = "legal_docs"
     
     # Embeddings model — multilingual, supports Hindi + English
     EMBEDDING_MODEL: str = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
 
     # Uploads
-    UPLOAD_DIR: str = "./uploads"
+    UPLOAD_DIR: str = "/tmp/uploads"
     MAX_FILE_SIZE_MB: int = 20
 
     # MLflow
