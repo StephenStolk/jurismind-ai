@@ -41,17 +41,15 @@ async def upload_document(
     
     doc_id = str(doc.id)
     await db.commit()
-    
-    task = process_document_task.delay(doc_id)
+  
     
     return success_response(
         message="Document uploaded and text extracted successfully.",
         data={
             "doc_id": doc_id,
-            "task_id": task.id,
             "original_filename": file.filename,
             "status": DocumentStatus.PENDING,
-            "poll_url": f"/api/v1/documents/{doc_id}",
+            "poll_url": f"/api/v1/documents/{doc_id}/status",
         },
     )
     
@@ -140,22 +138,28 @@ async def ingest_document(
     )
     
     
-@router.get("/task/{task_id}/status")
-async def get_task_status(task_id: str):
+@router.get("/{doc_id}/status")
+async def get_task_status(
+    doc_id: str,
+    db: AsyncSession = Depends(get_db)
+):
     """
-    Check Celery task processing status.
+    Check document processing status.
     Frontend polls this after upload to show progress.
     """
-    task = celery.AsyncResult(task_id)
+    uid = uuid.UUID(doc_id)
+    result = await db.execute(select(Document).where(Document.id == uid))
+    doc = result.scalar_one_or_none()
+    
+    if not doc:
+        raise HTTPException(status_code=404, detail="Document not found")
 
     return success_response(
-        message="Task status retrieved.",
+        message="Status retrieved.",
         data={
-            "task_id": task_id,
-            "state": task.state,
-            # PENDING | STARTED | SUCCESS | FAILURE | RETRY
-            "result": task.result if task.state == "SUCCESS" else None,
-            "error": str(task.info) if task.state == "FAILURE" else None,
+            "doc_id": doc_id,
+            "state": doc.status.name, # PENDING, PROCESSING, READY, FAILED
+            "error": doc.error_message if doc.status == DocumentStatus.FAILED else None,
         },
     )
     
