@@ -148,184 +148,239 @@
 
 
 
-import spacy
-from typing import List, Dict
-import re
+# import spacy
+# from typing import List, Dict
+# import re
 
-# Colour coding for frontend heatmap
-ENTITY_COLORS: Dict[str, str] = {
-    "COURT":       "#6366f1",   # indigo
-    "PETITIONER":  "#2dd4bf",   # teal
-    "RESPONDENT":  "#f87171",   # red
-    "JUDGE":       "#a78bfa",   # purple
-    "LAWYER":      "#60a5fa",   # blue
-    "DATE":        "#fbbf24",   # amber
-    "CASE_NUMBER": "#34d399",   # green
-    "GPE":         "#fb923c",   # orange
-    "STATUTE":     "#e879f9",   # pink
-    "PROVISION":   "#f472b6",   # rose
-    "PRECEDENT":   "#94a3b8",   # slate
-    "WITNESS":     "#a3e635",   # lime
-    "ORG":         "#38bdf8",   # sky
-    "PERSON":      "#2dd4bf",   # teal fallback
-}
+# # Colour coding for frontend heatmap
+# ENTITY_COLORS: Dict[str, str] = {
+#     "COURT":       "#6366f1",   # indigo
+#     "PETITIONER":  "#2dd4bf",   # teal
+#     "RESPONDENT":  "#f87171",   # red
+#     "JUDGE":       "#a78bfa",   # purple
+#     "LAWYER":      "#60a5fa",   # blue
+#     "DATE":        "#fbbf24",   # amber
+#     "CASE_NUMBER": "#34d399",   # green
+#     "GPE":         "#fb923c",   # orange
+#     "STATUTE":     "#e879f9",   # pink
+#     "PROVISION":   "#f472b6",   # rose
+#     "PRECEDENT":   "#94a3b8",   # slate
+#     "WITNESS":     "#a3e635",   # lime
+#     "ORG":         "#38bdf8",   # sky
+#     "PERSON":      "#2dd4bf",   # teal fallback
+# }
 
-LABEL_MAP: Dict[str, str] = {
-    "PETITIONER":  "PARTY",
-    "RESPONDENT":  "PARTY",
-    "JUDGE":       "PARTY",
-    "LAWYER":      "PARTY",
-    "WITNESS":     "PARTY",
-    "DATE":        "DATE",
-    "CASE_NUMBER": "CLAUSE_REF",
-    "PROVISION":   "CLAUSE_REF",
-    "STATUTE":     "CLAUSE_REF",
-    "COURT":       "LOCATION",
-    "GPE":         "LOCATION",
-    "PRECEDENT":   "CLAUSE_REF",
-    "ORG":         "PARTY",
-}
+# LABEL_MAP: Dict[str, str] = {
+#     "PETITIONER":  "PARTY",
+#     "RESPONDENT":  "PARTY",
+#     "JUDGE":       "PARTY",
+#     "LAWYER":      "PARTY",
+#     "WITNESS":     "PARTY",
+#     "DATE":        "DATE",
+#     "CASE_NUMBER": "CLAUSE_REF",
+#     "PROVISION":   "CLAUSE_REF",
+#     "STATUTE":     "CLAUSE_REF",
+#     "COURT":       "LOCATION",
+#     "GPE":         "LOCATION",
+#     "PRECEDENT":   "CLAUSE_REF",
+#     "ORG":         "PARTY",
+# }
 
+
+# class NERService:
+#     """
+#     Named Entity Recognition using OpenNyAI's en_legal_ner_trf model.
+#     Production-grade model trained on Indian Supreme Court judgements.
+#     Falls back to rule-based extraction if model unavailable.
+#     """
+
+#     def __init__(self):
+#         self._nlp = None
+#         self._model_loaded = False
+#         self._try_load_model()
+
+#     def _try_load_model(self):
+#         try:
+#             # Disable components we don't need — faster inference
+#             self._nlp = spacy.load(
+#                 "en_legal_ner_trf",
+#                 exclude=["tagger", "parser", "lemmatizer"]
+#             )
+#             self._model_loaded = True
+#             print("✓ OpenNyAI legal NER model loaded.")
+#         except OSError:
+#             print("⚠ OpenNyAI NER model not found — using rule-based fallback.")
+#             print("  Run: pip install https://huggingface.co/opennyaiorg/en_legal_ner_trf/resolve/main/en_legal_ner_trf-any-py3-none-any.whl")
+
+#     def extract_entities(self, text: str) -> List[Dict]:
+#         """
+#         Extract named entities from legal text.
+
+#         Returns list of:
+#         {
+#           text: str,
+#           label: str,          # OpenNyAI label e.g. PETITIONER
+#           mapped_label: str,   # your schema label e.g. PARTY
+#           start: int,
+#           end: int,
+#           color: str,          # hex for frontend
+#         }
+#         """
+#         if self._model_loaded:
+#             return self._spacy_extract(text)
+#         return self._rule_based_fallback(text)
+
+#     def _spacy_extract(self, text: str) -> List[Dict]:
+#         """
+#         Run OpenNyAI model inference.
+#         Splits long text into chunks to stay within model's max length.
+#         """
+#         MAX_CHARS = 100_000   # spaCy transformer limit
+
+#         # Process in chunks
+#         chunks = self._chunk_text(text, MAX_CHARS)
+#         all_entities = []
+#         offset = 0
+
+#         for chunk in chunks:
+#             doc = self._nlp(chunk)
+#             for ent in doc.ents:
+#                 # Skip very short or noisy entities
+#                 if len(ent.text.strip()) < 2:
+#                     continue
+
+#                 all_entities.append({
+#                     "text":         ent.text.strip(),
+#                     "label":        ent.label_,
+#                     "mapped_label": LABEL_MAP.get(ent.label_, ent.label_),
+#                     "start":        ent.start_char + offset,
+#                     "end":          ent.end_char + offset,
+#                     "color":        ENTITY_COLORS.get(ent.label_, "#8892a4"),
+#                 })
+#             offset += len(chunk)
+
+#         # Deduplicate — same text + label
+#         seen = set()
+#         deduped = []
+#         for ent in all_entities:
+#             key = (ent["text"].lower(), ent["label"])
+#             if key not in seen:
+#                 seen.add(key)
+#                 deduped.append(ent)
+
+#         return deduped
+
+#     def _chunk_text(self, text: str, max_chars: int) -> List[str]:
+#         """Split on paragraph boundaries to preserve context."""
+#         if len(text) <= max_chars:
+#             return [text]
+
+#         chunks = []
+#         paragraphs = text.split("\n\n")
+#         current = ""
+
+#         for para in paragraphs:
+#             if len(current) + len(para) > max_chars:
+#                 if current:
+#                     chunks.append(current)
+#                 current = para
+#             else:
+#                 current += "\n\n" + para if current else para
+
+#         if current:
+#             chunks.append(current)
+
+#         return chunks
+
+#     def get_entity_summary(self, entities: List[Dict]) -> Dict:
+#         """
+#         Group entities by label for the frontend summary panel.
+#         Returns: { "PARTY": ["Ramesh Kumar", "ABC Ltd"], "DATE": [...], ... }
+#         """
+#         summary: Dict[str, List[str]] = {}
+#         for ent in entities:
+#             label = ent["label"]
+#             if label not in summary:
+#                 summary[label] = []
+#             if ent["text"] not in summary[label]:
+#                 summary[label].append(ent["text"])
+#         return summary
+
+#     def _rule_based_fallback(self, text: str) -> List[Dict]:
+#         """Regex fallback when model isn't installed."""
+#         entities = []
+#         patterns = {
+#             "DATE":        r"\d{1,2}(?:st|nd|rd|th)?\s+(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\w*\s+\d{4}|\d{1,2}[/-]\d{1,2}[/-]\d{2,4}",
+#             "PROVISION":   r"[Ss]ection\s+\d+(?:\([a-z]\))?|[Aa]rticle\s+\d+|धारा\s+\d+",
+#             "CASE_NUMBER": r"[A-Z]+\s+(?:No|Petition|Appeal)\.?\s+\d+(?:/\d+)?",
+#             "GPE":         r"\b(?:Delhi|Mumbai|Chennai|Kolkata|Bangalore|Hyderabad|Pune|Ahmedabad)\b",
+#         }
+#         for label, pattern in patterns.items():
+#             for match in re.finditer(pattern, text):
+#                 entities.append({
+#                     "text":         match.group().strip(),
+#                     "label":        label,
+#                     "mapped_label": LABEL_MAP.get(label, label),
+#                     "start":        match.start(),
+#                     "end":          match.end(),
+#                     "color":        ENTITY_COLORS.get(label, "#8892a4"),
+#                 })
+#         return sorted(entities, key=lambda x: x["start"])
+
+
+# ner_service = NERService()
+
+
+
+
+
+
+
+
+import httpx
+import logging
+from app.core.config import settings
+
+logger = logging.getLogger(__name__)
 
 class NERService:
-    """
-    Named Entity Recognition using OpenNyAI's en_legal_ner_trf model.
-    Production-grade model trained on Indian Supreme Court judgements.
-    Falls back to rule-based extraction if model unavailable.
-    """
-
     def __init__(self):
-        self._nlp = None
-        self._model_loaded = False
-        self._try_load_model()
+        # The exact Hugging Face model URL
+        self.api_url = "https://api-inference.huggingface.co/models/opennyaiorg/en_legal_ner_trf"
+        self.headers = {"Authorization": f"Bearer {settings.HF_TOKEN}"}
 
-    def _try_load_model(self):
+    async def extract_entities(self, text: str) -> list:
+        """Sends text to Hugging Face API to extract legal entities."""
+        if not text:
+            return []
+
+        payload = {
+            "inputs": text,
+            "options": {"wait_for_model": True} # Wakes up the HF model if it's sleeping
+        }
+
         try:
-            # Disable components we don't need — faster inference
-            self._nlp = spacy.load(
-                "en_legal_ner_trf",
-                exclude=["tagger", "parser", "lemmatizer"]
-            )
-            self._model_loaded = True
-            print("✓ OpenNyAI legal NER model loaded.")
-        except OSError:
-            print("⚠ OpenNyAI NER model not found — using rule-based fallback.")
-            print("  Run: pip install https://huggingface.co/opennyaiorg/en_legal_ner_trf/resolve/main/en_legal_ner_trf-any-py3-none-any.whl")
+            async with httpx.AsyncClient(timeout=30.0) as client:
+                response = await client.post(self.api_url, headers=self.headers, json=payload)
+                
+                if response.status_code != 200:
+                    logger.error(f"Hugging Face API Error: {response.text}")
+                    return []
+                    
+                # Hugging Face returns a list of dictionaries with word, entity_group (label), etc.
+                results = response.json()
+                
+                # Format to match your existing frontend schema
+                return [
+                    {
+                        "text": item.get("word"),
+                        "label": item.get("entity_group", "OTHER")
+                    }
+                    for item in results if isinstance(item, dict)
+                ]
 
-    def extract_entities(self, text: str) -> List[Dict]:
-        """
-        Extract named entities from legal text.
-
-        Returns list of:
-        {
-          text: str,
-          label: str,          # OpenNyAI label e.g. PETITIONER
-          mapped_label: str,   # your schema label e.g. PARTY
-          start: int,
-          end: int,
-          color: str,          # hex for frontend
-        }
-        """
-        if self._model_loaded:
-            return self._spacy_extract(text)
-        return self._rule_based_fallback(text)
-
-    def _spacy_extract(self, text: str) -> List[Dict]:
-        """
-        Run OpenNyAI model inference.
-        Splits long text into chunks to stay within model's max length.
-        """
-        MAX_CHARS = 100_000   # spaCy transformer limit
-
-        # Process in chunks
-        chunks = self._chunk_text(text, MAX_CHARS)
-        all_entities = []
-        offset = 0
-
-        for chunk in chunks:
-            doc = self._nlp(chunk)
-            for ent in doc.ents:
-                # Skip very short or noisy entities
-                if len(ent.text.strip()) < 2:
-                    continue
-
-                all_entities.append({
-                    "text":         ent.text.strip(),
-                    "label":        ent.label_,
-                    "mapped_label": LABEL_MAP.get(ent.label_, ent.label_),
-                    "start":        ent.start_char + offset,
-                    "end":          ent.end_char + offset,
-                    "color":        ENTITY_COLORS.get(ent.label_, "#8892a4"),
-                })
-            offset += len(chunk)
-
-        # Deduplicate — same text + label
-        seen = set()
-        deduped = []
-        for ent in all_entities:
-            key = (ent["text"].lower(), ent["label"])
-            if key not in seen:
-                seen.add(key)
-                deduped.append(ent)
-
-        return deduped
-
-    def _chunk_text(self, text: str, max_chars: int) -> List[str]:
-        """Split on paragraph boundaries to preserve context."""
-        if len(text) <= max_chars:
-            return [text]
-
-        chunks = []
-        paragraphs = text.split("\n\n")
-        current = ""
-
-        for para in paragraphs:
-            if len(current) + len(para) > max_chars:
-                if current:
-                    chunks.append(current)
-                current = para
-            else:
-                current += "\n\n" + para if current else para
-
-        if current:
-            chunks.append(current)
-
-        return chunks
-
-    def get_entity_summary(self, entities: List[Dict]) -> Dict:
-        """
-        Group entities by label for the frontend summary panel.
-        Returns: { "PARTY": ["Ramesh Kumar", "ABC Ltd"], "DATE": [...], ... }
-        """
-        summary: Dict[str, List[str]] = {}
-        for ent in entities:
-            label = ent["label"]
-            if label not in summary:
-                summary[label] = []
-            if ent["text"] not in summary[label]:
-                summary[label].append(ent["text"])
-        return summary
-
-    def _rule_based_fallback(self, text: str) -> List[Dict]:
-        """Regex fallback when model isn't installed."""
-        entities = []
-        patterns = {
-            "DATE":        r"\d{1,2}(?:st|nd|rd|th)?\s+(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\w*\s+\d{4}|\d{1,2}[/-]\d{1,2}[/-]\d{2,4}",
-            "PROVISION":   r"[Ss]ection\s+\d+(?:\([a-z]\))?|[Aa]rticle\s+\d+|धारा\s+\d+",
-            "CASE_NUMBER": r"[A-Z]+\s+(?:No|Petition|Appeal)\.?\s+\d+(?:/\d+)?",
-            "GPE":         r"\b(?:Delhi|Mumbai|Chennai|Kolkata|Bangalore|Hyderabad|Pune|Ahmedabad)\b",
-        }
-        for label, pattern in patterns.items():
-            for match in re.finditer(pattern, text):
-                entities.append({
-                    "text":         match.group().strip(),
-                    "label":        label,
-                    "mapped_label": LABEL_MAP.get(label, label),
-                    "start":        match.start(),
-                    "end":          match.end(),
-                    "color":        ENTITY_COLORS.get(label, "#8892a4"),
-                })
-        return sorted(entities, key=lambda x: x["start"])
-
+        except Exception as e:
+            logger.error(f"Failed to fetch NER from Hugging Face: {e}")
+            return []
 
 ner_service = NERService()

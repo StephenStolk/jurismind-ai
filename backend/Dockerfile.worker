@@ -13,12 +13,12 @@ WORKDIR /app
 
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
-RUN pip install --no-cache-dir spacy-transformers
-RUN pip install --no-cache-dir --no-deps \
-    https://huggingface.co/opennyaiorg/en_legal_ner_trf/resolve/main/en_legal_ner_trf-any-py3-none-any.whl
 
 COPY . .
 RUN mkdir -p uploads chroma_db
 
-# solo pool — required for containerized Celery on Linux
-CMD ["celery", "-A", "app.core.celery_app", "worker", "--loglevel=info", "--pool=solo", "--concurrency=1"]
+# Expose Render standard container deployment port
+EXPOSE 10000
+
+# Fire up Uvicorn targeting our custom polling application layer
+CMD ["uvicorn", "worker_app:app", "--host", "0.0.0.0", "--port", "10000"]
