@@ -1,7 +1,9 @@
 FROM python:3.11-slim
 
-# System deps for OCR + spaCy
+# System deps for OCR + spaCy + build tools
 RUN apt-get update && apt-get install -y \
+    g++ \
+    build-essential \
     tesseract-ocr \
     tesseract-ocr-hin \
     tesseract-ocr-eng \
