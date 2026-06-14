@@ -17,7 +17,8 @@ WORKDIR /app
 
 # Python deps
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir --default-timeout=1000 -r requirements.txt
+
 
 # Install spaCy transformer support + OpenNyAI model
 RUN pip install --no-cache-dir spacy-transformers
